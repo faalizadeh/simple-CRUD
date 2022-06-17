@@ -1,0 +1,53 @@
+﻿@model CarViewModel
+@{
+    ViewData["Title"] = "ShowDetail";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">
+                        @{
+                            if (!String.IsNullOrEmpty(Model.ImageUrl))
+                            {
+                                <span>
+                                    <img src="~/Gallery/@Model.ImageUrl" class="w-75 h-75" />
+
+                                </span>
+                            }
+                            else
+                            {
+                                <span>
+                                    <img src="~/Gallery/new-inventory.jpg" class="w-75 h-75" />
+
+                                </span>
+                            }
+                        }
+                    </div>
+                    <div class="col-8">
+                        <div>
+                            <h6>نام برند</h6>
+                            <p class="mr-2">@Model.BrandName</p>
+                            @*<p>نام مدل</p>
+
+                                <p class="mr-2">@Model.ModelName</p>*@
+                            <h6>نام </h6>
+
+                            <p class="mr-2">@Model.Name</p>
+                            <h6>توضیحات </h6>
+                            <div class="col-12">
+                                <p>@Model.Description</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a asp-area="Admin" asp-controller="Product" asp-action="Index" class="btn green text-white">بازگشت</a>
+            </div>
+        </div>
+    </div>
+</div>

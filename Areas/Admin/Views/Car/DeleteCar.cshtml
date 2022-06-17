@@ -1,0 +1,86 @@
+﻿@model CarViewModel
+@{
+    ViewData["Title"] = "DeleteCar";
+}
+
+<form asp-controller="Car" asp-action="DeleteCar">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    آیا از حذف  خودرو با مشخصات زیر مطمئن هستید?
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8 form-group">
+                            <span asp-validation-for="@Model.Name" class="text-danger">
+                            </span>
+                            <br />
+                            <label asp-for="@Model.Name"></label>
+                            <input disabled asp-for="@Model.Name" class="form-control" />
+
+                        </div>
+                        <div class="col-8 form-group">
+                            <span asp-validation-for="@Model.Price" class="text-danger">
+                            </span>
+                            <br />
+                            <label asp-for="@Model.Price"></label>
+                            <input disabled type="number" asp-for="@Model.Price" class="form-control" />
+
+                        </div>
+                        <div class="col-8 form-group">
+                            <select disabled class="form-control" asp-for="@Model.BrandId" asp-items="@Model.BrandList">
+                                <option>برند را انتخاب کنید</option>
+                            </select>
+
+                        </div>
+                        <div class="col-8 form-group">
+                            <select disabled class="form-control" asp-for="@Model.ModelID" asp-items="@Model.ModelList">
+                                <option>مدل را انتخاب کنید</option>
+                            </select>
+
+                        </div>
+                        <div class="col-8 form-group">
+                            <select disabled class="form-control" asp-for="@Model.CategoryID" asp-items="@Model.CategoryList">
+                                <option>دسته بندی را انتخاب کنید</option>
+                            </select>
+
+                        </div>
+                        <div class="col-12">
+                            <div class="fileinput fileinput-new mt-4" data-provides="fileinput">
+                                <div class="fileinput-new thumbnail ImgStyle">
+                                    @{ if (@Model.ImageUrl != null)
+                                        {
+                                            <div class="col-4 ">
+                                                <img src="~/Gallery/@Model.ImageUrl" style="width:100px;height:100px;" />
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="col-4 ">
+                                                <img src="~/Image/Camera.png" style="width:100px;height:100px;" />
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                                <div class="fileinput-preview fileinput-exists thumbnail ImgStyle"> </div>
+                                <div>
+                                    <span class="btn default btn-file">
+                                        <span class="fileinput-new btn btn-outline-success font-10Pt"> انتخاب کنید </span>
+                                        <span class="fileinput-exists btn btn-outline-warning font-10Pt"> تغییر عکس </span>
+                                        <input disabled type="file" name="file" accept=".jpg, .png, .jpeg, .gif, .tif, .tiff, .JPG" />
+                                    </span>
+                                    <a href="javascript:;" class="btn btn-outline-danger text-danger font-10Pt fileinput-exists" data-dismiss="fileinput"> حذف </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-left">
+                    <a asp-area="Admin" asp-controller="Car" asp-action="Index" class="btn green text-white">خیر</a>
+                    <input type="submit" value="بله" class="btn green text-white" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

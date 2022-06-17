@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CarViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-solid">
+            <div class="card-header">
+                <h4 class="float-right">محصولات</h4>
+                <a class="float-left btn green" asp-area="Admin" asp-controller="Car" asp-action="AddNewCar">افزودن محصول</a>
+            </div>
+            <div class="card-body pb-0">
+                <div class="row d-flex align-items-stretch">
+                    @{
+                        if (Model.Count() > 0)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch mt-3">
+                                    <div class="card bg-light">
+                                        <div class="card-header text-muted border-bottom-0">
+                                            @item.Name
+                                        </div>
+                                        <div class="card-body pt-0" style="min-width:270px;min-height:200px;">
+                                            <div class="row">
+                                                <div class="col-12 text-center">
+                                                    @{
+                                                        if (!String.IsNullOrEmpty(item.ImageUrl))
+                                                        {
+                                                            <img src="~/Gallery/@item.ImageUrl" alt="" class="img-circle img-fluid w-75">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/Image/no-image-icon-4.png" alt="" class="img-circle img-fluid w-75">
+                                                        }
+                                                    }
+                                                </div>
+                                                <div class="col-12">
+                                                    <p class="m-2 text-center">
+                                                        @item.BrandName
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="text-right">
+                                                <a asp-area="Admin" asp-controller="Product" asp-action="ShowDetail" asp-route-id="@item.ID" class="btn btn-sm green float-left">
+                                                    <i class="fas fa-eye"></i>نمایش
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="col-12 text-center m-2">
+                                <p class="text-center">
+                                    رکوردی موجود نیست
+                                </p>
+                                <a class="btn green" asp-area="Admin" asp-controller="Car" asp-action="AddNewCar">افزودن محصول</a>
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

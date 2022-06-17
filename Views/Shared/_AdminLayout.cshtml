@@ -1,0 +1,144 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    <link href="~/fontawesome-free/css/all.css" rel="stylesheet" />
+    <link href="~/css/bootstrap-fileinput.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-2 col-12 sidebar_right">
+                <div id="Brand" class="col-md-12">
+                    <p>فروشگاه ماشین</p>
+                </div>
+                <div id="Logo" class="col-md-12">
+                    <div class="row">
+
+                        <div class="col-md-8">
+                            <div>
+                            </div>
+                            <p>CarShop</p>
+                            <span>
+                                www.carshop.com
+                            </span>
+                        </div>
+                        <div class="col-md-4">
+                            <img class="pic_menu" src="~/Image/LogoCar.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="Scroll">
+                    <ul class="menu col-12 p-0 ">
+                        <li>
+
+                        </li>
+                        <li class=" arrow_right">
+                            <a>
+                                <i class="fa fa-th-list"></i>
+
+                                اطلاعات پایه
+                                @*<i class="right fas fa-angle-left"></i>*@
+
+                            </a>
+                            <ul class="subMenue" style="display:block">
+                                <li class="">
+                                    <i class="fa fa-circle-notch nav-icon"></i>
+                                    <a asp-area="Admin" asp-controller="Brand" asp-action="Index">
+                                        برند
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <i class="fa fa-circle-notch nav-icon"></i>
+                                    <a asp-area="Admin" asp-controller="Category" asp-action="Index">دسته بندی</a>
+                                </li>
+                                <li class="">
+                                    <i class="fa fa-circle-notch nav-icon"></i>
+                                    <a asp-area="Admin" asp-controller="Car" asp-action="Index">افزودن ماشین</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="arrow_right">
+                            <a asp-area="Admin" asp-controller="product" asp-action="Index">
+                                <i class="fa fa-car"></i>
+
+                                مشاهده محصولات
+                                <i class="right fas fa-picture-o"></i>
+
+                            </a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="row">
+                    <div class="col-md-12 p-0 bg-danger">
+                        <nav class="navbar navbar-light bg-light">
+                            <a class="navbar-brand text-black-50" asp-controller="Product" asp-action="Index"><i class="fa fa-home"></i></a>
+                        </nav>
+
+                    </div>
+                    <div class="col-md-12 mt-4 mb-4" style="font-size:30pt">
+                        @ViewBag.TitlePage
+                    </div>
+                    <div class="col-md-12">
+                        @RenderBody()
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    @*<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>*@
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/myJs.js"></script>
+    @*<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>*@
+    <script src="~/js/bootstrap-fileinput.js"></script>
+
+    <script>
+
+        var counter = 0;
+
+        //$(".arrow_right").click(function () {
+        //    if (counter == 1 && status == Open) {
+        //        alert("yes");
+
+        //        var tag = $(this);
+        //        right_arrow = tag.find('.right');
+        //        right_arrow.removeClass("fa-angle-down");
+        //        right_arrow.addClass("fa-angle-left");
+        //        counter--;
+
+        //    }
+
+        $(".arrow_right").click(function () {
+            if (counter == 0) {
+                var tag = $(this);
+                right_arrow = tag.find('.right');
+                right_arrow.addClass("fa-angle-down");
+                right_arrow.removeClass("fa-angle-left");
+                tag.find('.subMenue').slideToggle(2000);
+
+                //counter++;
+
+            }
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model ColorViewModel
+@{
+    ViewData["Title"] = "AddColor";
+    ViewData["TitlePage"] = "افزودن رنگ جدید";
+}
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8 border ">
+        <form class="m-4" asp-area="Admin" asp-controller="Color" asp-action="AddColor" method="post">
+            <div class="row">
+                <div class="col-8 form-group">
+                    <span asp-validation-for="@Model.ColorName" class="text-danger">
+                    </span>
+                    <br />
+                    <label asp-for="@Model.ColorName"></label>
+                    <input asp-for="@Model.ColorName" class="form-control" />
+
+                   
+                    <br />
+                    <label asp-for="@Model.ColorNumber"></label>
+                    <input type="color" asp-for="@Model.ColorNumber" class="form-control" />
+
+                </div>
+                <div class="col-12 text-left">
+                    <a asp-area="Admin" asp-controller="Color" asp-action="Index" class="btn green text-white">انصراف</a>
+                    <input type="submit" value="افزودن" class="btn green text-white" />
+
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-2"></div>
+</div>
+

@@ -1,0 +1,47 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CategoryViewModel
+@{
+    ViewData["Title"] = "AddCategory";
+    ViewData["TitlePage"] = "افزودن دسته بندی ";
+}
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8 border ">
+        <form class="m-4" asp-area="Admin" asp-controller="Category" asp-action="AddCategory" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-8 form-group">
+                    <span asp-validation-for="@Model.CategoryName" class="text-danger">
+                    </span>
+                    <br />
+                    <label asp-for="@Model.CategoryName"></label>
+                    <input asp-for="@Model.CategoryName" class="form-control" />
+
+                    <div class="fileinput fileinput-new mt-3" data-provides="fileinput">
+                        <div class="fileinput-new thumbnail ImgStyle">
+                            <img src="~/Gallery/category.png" />
+                        </div>
+                        <div class="fileinput-preview fileinput-exists thumbnail ImgStyle"> </div>
+                        <div>
+                            <span class="btn default btn-file">
+                                <span class="fileinput-new btn btn-outline-success font-10Pt"> انتخاب کنید </span>
+                                <span class="fileinput-exists btn btn-outline-warning font-10Pt"> تغییر عکس </span>
+                                <input type="file" name="file" accept=".jpg, .png, .jpeg, .gif, .tif, .tiff, .JPG" />
+                            </span>
+                            <a href="javascript:;" class="btn btn-outline-danger text-danger font-10Pt fileinput-exists" data-dismiss="fileinput"> حذف </a>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-12 text-left">
+                    <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="btn green text-white">انصراف</a>
+                    <input type="submit" value="افزودن" class="btn green text-white" />
+
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-2"></div>
+</div>
+

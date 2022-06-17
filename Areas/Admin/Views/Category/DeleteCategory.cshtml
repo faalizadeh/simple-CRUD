@@ -1,0 +1,28 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CategoryViewModel
+@{
+    ViewData["Title"] = "DeleteCategory";
+}
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8 border ">
+        <form class="m-4" asp-area="Admin" asp-controller="Category" asp-action="DeleteCategory" method="post">
+            <div class="row">
+                <div class="col-8 form-group">
+                    <label> ایا از حذف این دسته بندی مطمئن هستین</label>
+                    <p>@Model.CategoryName</p>
+                    <span asp-validation-for="@Model.CategoryName" class="text-danger">
+
+                    </span>
+                </div>
+                <div class="col-12 text-left">
+                    <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="btn green text-white">انصراف</a>
+                    <input type="submit" value="حذف" class="btn green text-white" />
+
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-2"></div>
+</div>

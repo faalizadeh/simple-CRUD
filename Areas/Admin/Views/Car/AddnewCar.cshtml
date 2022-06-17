@@ -1,0 +1,82 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CarViewModel
+@{
+    ViewData["Title"] = "AddnewCar";
+
+}
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8 border ">
+        <form class="m-4" asp-area="Admin" asp-controller="Car" asp-action="AddnewCar" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-8 form-group">
+                    <span asp-validation-for="@Model.Name" class="text-danger">
+                    </span>
+                    <br />
+                    <label asp-for="@Model.Name"></label>
+                    <input asp-for="@Model.Name" class="form-control" />
+
+                </div>
+                <div class="col-8 form-group">
+                    <span asp-validation-for="@Model.Price" class="text-danger">
+                    </span>
+                    <br />
+                    <label asp-for="@Model.Price"></label>
+                    <input asp-for="@Model.Price" class="form-control" />
+
+                </div>
+                <div class="col-8 form-group">
+                    <span asp-validation-for="@Model.BrandId" class="text-danger">
+                    </span>
+                    <select class="form-control" asp-for="@Model.BrandId" asp-items="@Model.BrandList">
+                        <option>برند را انتخاب کنید</option>
+                    </select>
+
+                </div>
+                @*<div class="col-8 form-group">
+                        <select class="form-control" asp-for="@Model.ModelID" asp-items="@Model.ModelList">
+                            <option>مدل را انتخاب کنید</option>
+                        </select>
+
+                    </div>*@
+                <div class="col-8 form-group">
+                    <span asp-validation-for="@Model.CategoryID" class="text-danger">
+                    </span>
+                    <select class="form-control" asp-for="@Model.CategoryID" asp-items="@Model.CategoryList">
+                        <option>دسته بندی را انتخاب کنید</option>
+                    </select>
+
+                </div>
+                <div class="col-12">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-new thumbnail ImgStyle">
+                            <img src="~/Image/Camera.png" style="width:100px;height:100px;" />
+
+                        </div>
+                        <div class="fileinput-preview fileinput-exists thumbnail ImgStyle"> </div>
+                        <div>
+                            <span class="btn default btn-file">
+                                <span class="fileinput-new btn btn-outline-success font-10Pt"> انتخاب کنید </span>
+                                <span class="fileinput-exists btn btn-outline-warning font-10Pt"> تغییر عکس </span>
+                                <input type="file" name="file" accept=".jpg, .png, .jpeg, .gif, .tif, .tiff, .JPG" />
+                            </span>
+                            <a href="javascript:;" class="btn btn-outline-danger text-danger font-10Pt fileinput-exists" data-dismiss="fileinput"> حذف </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label asp-for="@Model.Description"></label>
+                    <textarea class=" form-control col-md-9" asp-for="@Model.Description"></textarea>
+                </div>
+                <div class="col-12 text-left mt-3">
+                    <a asp-area="Admin" asp-controller="Car" asp-action="Index" class="btn green text-white">انصراف</a>
+                    <input type="submit" value="افزودن" class="btn green text-white" />
+
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-2"></div>
+</div>
+

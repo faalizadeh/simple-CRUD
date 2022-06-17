@@ -1,0 +1,62 @@
+﻿@model IEnumerable<CarViewModel>
+
+@{
+    ViewData["Title"] = ViewBag.TitlePage;
+}
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="box">
+            <div class="box-body">
+                <div class="row">
+                    <div id="Add_Category" class="col-md-12 border-bottom ">
+                        <p class="text-danger float-right">
+                            @TempData["Message"]
+                        </p>
+                        <a asp-area="Admin" asp-controller="Car" asp-action="AddNewCar" class="btn btn-link green float-left">افزودن خودرو</a>
+                    </div>
+                    <table id="List_Category" class="table table-striped col-12">
+                        <thead>
+                            <tr>
+                                <th>ردیف</th>
+                                <th>نام ماشین</th>
+                                <th>قیمت</th>
+                                <th>ویرایش</th>
+                                <th>حذف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @{
+                                var i = 0;
+                                foreach (var item in Model)
+                                {
+                                    i++;
+                                    <tr>
+                                        <td>@i</td>
+                                        <td>@item.Name</td>
+                                        <td>@item.Price</td>
+
+                                        <td>
+                                            <a class="btn btn-link" asp-area="Admin" asp-controller="Car" asp-action="EditCar" asp-route-Id="@item.ID">
+                                                <i class="fa fa-edit " style="color:#017b44"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a id="Delete" class="btn btn-link" asp-area="Admin" asp-controller="Car" asp-action="DeleteCar" asp-route-Id="@item.ID">
+                                                <i class="fa fa-trash" style="color:#017b44"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

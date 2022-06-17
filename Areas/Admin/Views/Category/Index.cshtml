@@ -1,0 +1,78 @@
+﻿@model IEnumerable<CategoryViewModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = ViewBag.TitlePage;
+}
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="box">
+            <div class="box-body">
+                <div class="row">
+                    <div id="Add_Category" class="col-md-12 border-bottom ">
+                        <form asp-area="Admin" asp-controller="Category" asp-action="AddCategory" method="get">
+                            <div class="row">
+                                <div class="col-12 mb-2">
+                                    <p class="text-danger float-right">
+                                        @TempData["Message"]
+                                    </p>
+                                    <input type="submit" value="افزودن دسته بندی" class="btn btn-link green text-white float-left">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <table id="List_Category" class="table table-striped col-12">
+                        <thead>
+                            <tr>
+                                <th>ردیف</th>
+                                <th>دسته بندی</th>
+                                <th>نوع بدنه</th>
+                                <th>ویرایش</th>
+                                <th>حذف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @{
+                                var i = 0;
+                                foreach (var item in Model)
+                                {
+                                    i++;
+                                    <tr>
+                                        <td>@i</td>
+                                        <td>@item.CategoryName</td>
+                                        <td>
+                                            @if (item.ImageUrl == null)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                <img style="width:20px; height:20px" src="~/Gallery/@item.ImageUrl" />
+                                            }
+
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-link" asp-area="Admin" asp-controller="Category" asp-action="EditCategory" asp-route-Id="@item.ID">
+                                                <i class="fa fa-edit " style="color:#017b44"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a id="Delete" class="btn btn-link" asp-area="Admin" asp-controller="Category" asp-action="DeleteCategory" asp-route-Id="@item.ID">
+                                                <i class="fa fa-trash" style="color:#017b44"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
