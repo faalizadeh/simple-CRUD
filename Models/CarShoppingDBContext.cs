@@ -11,7 +11,7 @@ namespace OnlineShopping.Models
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-014OQ6H;Database=AutoShopping;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=.;Database=AutoShopping;Trusted_Connection=True;");
 
         }
 
